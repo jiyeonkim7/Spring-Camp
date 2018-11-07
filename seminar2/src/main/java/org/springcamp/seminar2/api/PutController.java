@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PutController {
 
     @PutMapping("")
-    public String putUser(@RequestBody final User user){
+    public String putUser(@RequestBody final User user) {
         return user.getPart();
     }
 }

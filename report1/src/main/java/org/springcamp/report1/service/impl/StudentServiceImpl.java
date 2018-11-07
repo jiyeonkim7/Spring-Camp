@@ -7,7 +7,7 @@ import org.springcamp.report1.service.StudentService;
 public class StudentServiceImpl implements StudentService {
 
     @Override
-    public Student getByStudentIdx(int studentIdx){
+    public Student getByStudentIdx(int studentIdx) {
 
         Student student = new Student();
 

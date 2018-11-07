@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class DeleteController {
 
     @DeleteMapping("")
-    public String deleteUser(@RequestBody final User user){
+    public String deleteUser(@RequestBody final User user) {
 
         return "delete success";
     }

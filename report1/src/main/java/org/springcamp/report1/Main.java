@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // 제너릭 사용해서 학생 타입 ArrayList 생성
         final ArrayList<Student> studentList = new ArrayList<>();
@@ -21,7 +21,7 @@ public class Main {
         studentList.add(std3);
 
         // ArrayList를 돌면서 각 객체의 toString 메소드 실행
-        for(final Student s : studentList) {
+        for (final Student s : studentList) {
             System.out.println(s.toString());
         }
     }

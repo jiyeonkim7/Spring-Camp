@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
 
     @PostMapping("")
-    public String postUser(@RequestBody final User user){
+    public String postUser(@RequestBody final User user) {
         return user.getName();
     }
 }

@@ -8,15 +8,15 @@ public class Professor {
     private String subject;
 
 
-
-    public String toString(){
+    public String toString() {
         return "";
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
-    public String getDepart(){
+
+    public String getDepart() {
         return this.depart;
     }
 
