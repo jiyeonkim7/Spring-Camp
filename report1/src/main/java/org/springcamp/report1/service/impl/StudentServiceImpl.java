@@ -6,12 +6,13 @@ import org.springcamp.report1.service.StudentService;
 
 public class StudentServiceImpl implements StudentService {
 
+    private StudentBuilder studentBuilder = new StudentBuilder();
+
     @Override
     public Student getByStudentIdx(int studentIdx) {
 
-        Student student = new Student();
-
-        // builder로 객체 생성해서 변환
-        return student;
+        return studentBuilder
+                .setStdIdx(studentIdx)
+                .build();
     }
 }

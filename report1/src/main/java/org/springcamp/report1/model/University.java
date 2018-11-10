@@ -49,8 +49,8 @@ public class University {
 
     @Override
     public String toString() {
-        return "University { " +
-                "University Index = " + univ_idx +
+        return "University {" +
+                " University Index = " + univ_idx +
                 ", University Name = '" + univ_name + '\'' +
                 ", University Phone Number = '" + univ_phoneNum + '\'' +
                 ", University Address = '" + univ_addr + '\'' +

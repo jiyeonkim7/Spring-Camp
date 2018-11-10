@@ -17,7 +17,7 @@ public class Department extends University {
         this.dep_type = dep_type;
     }
 
-    public Department(final int univ_idx, final String univ_name, final String univ_phoneNum, final String univ_addr, final int dep_idx, final String dep_name, final String dep_tele, final String dep_type) {
+    public Department(final int univ_idx, final String univ_name, final String univ_phoneNum, final String univ_addr, final int dep_idx, final String dep_name, final String dep_phoneNum, final String dep_type) {
         super(univ_idx, univ_name, univ_phoneNum, univ_addr);
         this.dep_idx = dep_idx;
         this.dep_name = dep_name;
@@ -59,8 +59,8 @@ public class Department extends University {
 
     @Override
     public String toString() {
-        return "Department { " +
-                "Department Index =" + dep_idx +
+        return "Department {" +
+                " Department Index =" + dep_idx +
                 ", Department Name ='" + dep_name + '\'' +
                 ", Department Telephone Number ='" + dep_phoneNum + '\'' +
                 ", Department Type ='" + dep_type + '\'' +
