@@ -9,10 +9,10 @@ public class StudentServiceImpl implements StudentService {
     private StudentBuilder studentBuilder = new StudentBuilder();
 
     @Override
-    public Student getByStudentIdx(int studentIdx) {
+    public Student getByStdIdx(int student_idx) {
 
         return studentBuilder
-                .setStdIdx(studentIdx)
+                .setStdIdx(student_idx)
                 .build();
     }
 }

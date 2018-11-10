@@ -18,10 +18,10 @@ public class Professor extends Department{
         this.prof_subject = prof_subject;
     }
 
-    public Professor(final int UnivIdx, final String UnivName, final String UnivPhoneNum, final String UnivAddress,
-                     final int DepIdx, final String DepName, final String DepPhoneNum, final String DepType,
+    public Professor(final int univ_idx, final String univ_name, final String univ_phoneNum, final String univ_addr,
+                     final int dep_idx, final String dep_name, final String dep_phoneNum, final String dep_type,
                      final int prof_idx, final String prof_name, final String prof_depart, final String prof_phoneNum, final String prof_subject) {
-        super(UnivIdx, UnivName, UnivPhoneNum, UnivAddress, DepIdx, DepName, DepPhoneNum, DepType);
+        super(univ_idx, univ_name, univ_phoneNum, univ_addr, dep_idx, dep_name, dep_phoneNum, dep_type);
         this.prof_idx = prof_idx;
         this.prof_name = prof_name;
         this.prof_depart = prof_depart;
@@ -33,7 +33,7 @@ public class Professor extends Department{
         return prof_idx;
     }
 
-    public void setProfIdx(final int PfIdx) {
+    public void setProfIdx(final int prof_idx) {
         this.prof_idx = prof_idx;
     }
 
@@ -65,7 +65,7 @@ public class Professor extends Department{
         return prof_subject;
     }
 
-    public void setProfSubject(final String PfSubject) {
+    public void setProfSubject(final String prof_subject) {
         this.prof_subject = prof_subject;
     }
 
