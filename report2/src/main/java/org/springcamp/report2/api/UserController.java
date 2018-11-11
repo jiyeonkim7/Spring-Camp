@@ -3,6 +3,8 @@ package org.springcamp.report2.api;
 import org.springcamp.report2.model.User;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,29 +15,79 @@ public class UserController {
 
     @GetMapping("/")
     public String currentTime() {
-        return "Hello world!";
+
+        long time = System.currentTimeMillis();
+
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        String str = dayTime.format(new Date(time));
+
+        return str;
     }
 
+/*
     @GetMapping("/users")
     public List<User> getUserList() {
+
         return userList;
     }
+*/
 
     @GetMapping("/users")
-    public List<User> getUser(
+    public List<User> getUserList(
             @RequestParam(value = "name", defaultValue = "") final String name,
             @RequestParam(value = "part", defaultValue = "") final String part) {
 
+        List<User> users = new LinkedList<>();
 
-        return userList;
+        // all of users
+        if(name == "" && part == ""){
+            return userList;
+        }
+        // by name
+        else if(name != ""){
+            for(int i=0; i<userList.size(); ++i){
+                if(userList.get(i).getName() == name){
+                    users.add(userList.get(i));
+                }
+            }
+        }
+        // by part
+        else if(part != ""){
+            for(int i=0; i<userList.size(); ++i){
+                if(userList.get(i).getPart() == part){
+                    users.add(userList.get(i));
+                }
+            }
+        }
+
+        /*
+        if(users.size() == 0){
+            return "없습니다.";
+        }
+        */
+
+        return users;
     }
 
     @GetMapping("/users/{user_idx}")
     public List<User> getUserByIdx(
-            @PathVariable(value = "user_idx") final String user_idx) {
+            @PathVariable(value = "user_idx") final int user_idx) {
 
+        List<User> users = new LinkedList<>();
 
-        return userList;
+        for(int i=0; i<userList.size(); ++i){
+            if(userList.get(i).getUserIdx() == user_idx){
+                users.add(userList.get(i));
+            }
+        }
+
+        /*
+        if(users.size() == 0){
+            return "없습니다.";
+        }
+        */
+
+        return users;
     }
 
 
@@ -47,13 +99,29 @@ public class UserController {
     }
 
     @PutMapping("/users/{user_idx}")
-    public String putUser(@RequestBody final User user) {
+    public String putUser(
+            @PathVariable(value = "user_idx") final int user_idx,
+            @RequestBody final User user) {
+
+        for(User u : userList){
+            if(u.getUserIdx() == user_idx){
+                u.setName(user.getName());
+                u.setPart(user.getPart());
+            }
+        }
+
         return user.getPart();
     }
 
     @DeleteMapping("/users/{user_idx}")
-    public String deleteUser(@RequestBody final User user) {
+    public void deleteUser(
+            @PathVariable(value = "user_idx") final int user_idx) {
 
-        return "delete success";
+        for(int i=0; i<userList.size(); ++i){
+            if(userList.get(i).getUserIdx() == user_idx){
+                userList.remove(i);
+            }
+        }
+
     }
 }

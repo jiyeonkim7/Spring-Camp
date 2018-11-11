@@ -10,9 +10,18 @@ public class User {
     public User() {
     }
 
-    public User(final String name, final String part) {
+    public User(final int user_idx, final String name, final String part) {
+        this.user_idx = user_idx;
         this.name = name;
         this.part = part;
+    }
+
+    public int getUserIdx() {
+        return this.user_idx;
+    }
+
+    public void setUserIdx(int user_idx) {
+        this.user_idx = user_idx;
     }
 
     public String getName() {
@@ -27,7 +36,7 @@ public class User {
         return this.part;
     }
 
-    public void setPart(String name) {
+    public void setPart(String part) {
         this.part = part;
     }
 }
