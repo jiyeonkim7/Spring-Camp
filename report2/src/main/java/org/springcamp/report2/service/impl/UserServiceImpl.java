@@ -10,6 +10,21 @@ public class UserServiceImpl implements UserService {
 
         User user = new User();
 
+        return user;
+    }
+
+    @Override
+    public User getByName(final String name){
+
+        User user = new User();
+
+        return user;
+    }
+
+    @Override
+    public User getByPart(final String part){
+
+        User user = new User();
 
         return user;
     }
