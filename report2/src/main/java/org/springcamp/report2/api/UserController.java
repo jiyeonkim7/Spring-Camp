@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -24,47 +25,43 @@ public class UserController {
         return str;
     }
 
-/*
     @GetMapping("/users")
-    public List<User> getUserList() {
+    public List<String> getUserListByNameAndPart(
+            @RequestParam(value = "name") final Optional<String> name,
+            @RequestParam(value = "part") final Optional<String> part) {
 
-        return userList;
-    }
-*/
+        System.out.println(name);
+        System.out.println(part);
 
-    @GetMapping("/users")
-    public List<User> getUserList(
-            @RequestParam(value = "name", defaultValue = "") final String name,
-            @RequestParam(value = "part", defaultValue = "") final String part) {
+        List<String> users = new LinkedList<>();
 
-        List<User> users = new LinkedList<>();
-
-        // all of users
-        if(name == "" && part == ""){
-            return userList;
-        }
         // by name
-        else if(name != ""){
-            for(int i=0; i<userList.size(); ++i){
-                if(userList.get(i).getName() == name){
-                    users.add(userList.get(i));
+        if(name.isPresent()){
+            for(User u : userList){
+                if(u.getName().equals(name.get())){
+                    users.add(u.toString());
                 }
             }
         }
         // by part
-        else if(part != ""){
-            for(int i=0; i<userList.size(); ++i){
-                if(userList.get(i).getPart() == part){
-                    users.add(userList.get(i));
+        else if(part.isPresent()){
+
+            for(User u : userList){
+                if(u.getPart().equals(part.get())){
+                    users.add(u.toString());
                 }
             }
         }
-
-        /*
-        if(users.size() == 0){
-            return "없습니다.";
+        // all of users
+        else {
+            for(User u : userList){
+                users.add(u.toString());
+            }
         }
-        */
+
+        if(users.size() == 0) {
+            users.add("없습니다.");
+        }
 
         return users;
     }
@@ -93,9 +90,11 @@ public class UserController {
 
 
     @PostMapping("/users")
-    public void postUser(@RequestBody final User user) {
+    public String postUser(@RequestBody final User user) {
 
         userList.add(user);
+
+        return "Insert Success :: " + user.toString();
     }
 
     @PutMapping("/users/{user_idx}")
@@ -103,25 +102,34 @@ public class UserController {
             @PathVariable(value = "user_idx") final int user_idx,
             @RequestBody final User user) {
 
+        String result = "Update Error";
+
         for(User u : userList){
             if(u.getUserIdx() == user_idx){
                 u.setName(user.getName());
                 u.setPart(user.getPart());
+                result = "Update Success :: " + u.toString();
+                break;
             }
         }
 
-        return user.getPart();
+        return result;
     }
 
     @DeleteMapping("/users/{user_idx}")
-    public void deleteUser(
+    public String deleteUser(
             @PathVariable(value = "user_idx") final int user_idx) {
 
-        for(int i=0; i<userList.size(); ++i){
-            if(userList.get(i).getUserIdx() == user_idx){
-                userList.remove(i);
+        String result = "Delete Error";
+
+        for(User u : userList){
+            if(u.getUserIdx() == user_idx){
+                userList.remove(u);
+                result = "Delete Success :: " + u.toString();
+                break;
             }
         }
 
+        return result;
     }
 }

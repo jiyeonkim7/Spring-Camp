@@ -5,23 +5,16 @@ public class User {
     private int user_idx;
     private String name;
     private String part;
+    private static int count = 10;
 
-
-    public User() {
-    }
-
-    public User(final int user_idx, final String name, final String part) {
-        this.user_idx = user_idx;
+    public User(final String name, final String part) {
+        this.user_idx = ++count;
         this.name = name;
         this.part = part;
     }
 
     public int getUserIdx() {
         return this.user_idx;
-    }
-
-    public void setUserIdx(int user_idx) {
-        this.user_idx = user_idx;
     }
 
     public String getName() {
@@ -38,5 +31,12 @@ public class User {
 
     public void setPart(String part) {
         this.part = part;
+    }
+
+    @Override
+    public String toString() {
+        return "User Index = " + user_idx +
+                ", Name = '" + name + '\'' +
+                ", Part = '" + part + '\'';
     }
 }
