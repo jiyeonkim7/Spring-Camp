@@ -3,35 +3,24 @@ package org.springcamp.report2.api;
 import org.springcamp.report2.model.User;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 public class UserController {
 
     private final static List<User> userList = new LinkedList<>();
 
+    // SELECT
     @GetMapping("/")
-    public String currentTime() {
+    public String getCurrentTime() {
 
-        long time = System.currentTimeMillis();
-
-        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        String str = dayTime.format(new Date(time));
-
-        return str;
+        return new Date().toString();
     }
 
     @GetMapping("/users")
-    public List<String> getUserListByNameAndPart(
+    public List<String> getUserList(
             @RequestParam(value = "name") final Optional<String> name,
             @RequestParam(value = "part") final Optional<String> part) {
-
-        System.out.println(name);
-        System.out.println(part);
 
         List<String> users = new LinkedList<>();
 
@@ -67,28 +56,28 @@ public class UserController {
     }
 
     @GetMapping("/users/{user_idx}")
-    public List<User> getUserByIdx(
+    public List<String> getUserByIdx(
             @PathVariable(value = "user_idx") final int user_idx) {
 
-        List<User> users = new LinkedList<>();
+        List<String> users = new LinkedList<>();
 
-        for(int i=0; i<userList.size(); ++i){
-            if(userList.get(i).getUserIdx() == user_idx){
-                users.add(userList.get(i));
+        for(User u : userList) {
+            if (u.getUserIdx() == user_idx) {
+                users.add(u.toString());
+                break;
             }
         }
 
-        /*
-        if(users.size() == 0){
-            return "없습니다.";
+        if(users.size() == 0) {
+            users.add("없습니다.");
         }
-        */
 
         return users;
     }
 
 
 
+    // INSERT
     @PostMapping("/users")
     public String postUser(@RequestBody final User user) {
 
@@ -97,6 +86,7 @@ public class UserController {
         return "Insert Success :: " + user.toString();
     }
 
+    // UPDATE
     @PutMapping("/users/{user_idx}")
     public String putUser(
             @PathVariable(value = "user_idx") final int user_idx,
@@ -116,6 +106,7 @@ public class UserController {
         return result;
     }
 
+    // DELETE
     @DeleteMapping("/users/{user_idx}")
     public String deleteUser(
             @PathVariable(value = "user_idx") final int user_idx) {
