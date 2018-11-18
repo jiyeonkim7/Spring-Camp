@@ -23,7 +23,7 @@ public class UserController {
             @RequestParam(value = "part") final Optional<String> part) {
 
         List<String> users = new LinkedList<>();
-
+/*
         // by name
         if(name.isPresent()){
             for(User u : userList){
@@ -51,8 +51,9 @@ public class UserController {
         if(users.size() == 0) {
             users.add("없습니다.");
         }
-
+*/
         return users;
+
     }
 
     @GetMapping("/users/{user_idx}")

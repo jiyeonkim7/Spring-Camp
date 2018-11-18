@@ -11,7 +11,7 @@ public interface UserService {
 
     String getCurrentTime();
 
-    List<String> getUserList(final Optional<String> name, final Optional<String> part);
+    List<String> getUserList(final Optional<String> name, final Optional<String> part, List<User> userList);
 
     List<String> getUserByIdx(final int user_idx);
 
