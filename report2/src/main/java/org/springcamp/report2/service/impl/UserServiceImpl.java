@@ -2,7 +2,6 @@ package org.springcamp.report2.service.impl;
 
 import org.springcamp.report2.model.User;
 import org.springcamp.report2.service.UserService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -10,33 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
-
-    @Override
-    public User getByUserIdx(final int user_idx){
-
-        User user = new User();
-
-        return user;
-    }
-
-    @Override
-    public User getByName(final String name){
-
-        User user = new User();
-
-        return user;
-    }
-
-    @Override
-    public User getByPart(final String part){
-
-        User user = new User();
-
-        return user;
-    }
-
-
-
 
     @Override
     public String getCurrentTime(){
@@ -80,22 +52,39 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<String> getUserByIdx(final int user_idx){
+    public List<String> getUserByIdx(final int user_idx, List<User> userList){
+
+        List<String> users = new LinkedList<>();
+
+        for(User u : userList) {
+            if (u.getUserIdx() == user_idx) {
+                users.add(u.toString());
+                break;
+            }
+        }
+
+        if(users.size() == 0) {
+            users.add("없습니다.");
+        }
+
+        return users;
+    }
+
+
+/*
+    @Override
+    public User getByUserIdx(final int user_idx, List<User> userList){
 
     }
 
     @Override
-    public User getByUserIdx(final int user_idx){
+    public User getByName(final String name, List<User> userList){
 
     }
 
     @Override
-    public User getByName(final String name){
+    public User getByPart(final String part, List<User> userList){
 
     }
-
-    @Override
-    public User getByPart(final String part){
-
-    }
+    */
 }

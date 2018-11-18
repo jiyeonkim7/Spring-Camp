@@ -13,12 +13,14 @@ public interface UserService {
 
     List<String> getUserList(final Optional<String> name, final Optional<String> part, List<User> userList);
 
-    List<String> getUserByIdx(final int user_idx);
+    List<String> getUserByIdx(final int user_idx, List<User> userList);
 
 
-    User getByUserIdx(final int user_idx);
+    /*
+    User getByUserIdx(final int user_idx, List<User> userList);
 
-    User getByName(final String name);
+    User getByName(final String name, List<User> userList);
 
-    User getByPart(final String part);
+    User getByPart(final String part, List<User> userList);
+    */
 }

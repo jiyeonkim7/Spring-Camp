@@ -1,6 +1,7 @@
 package org.springcamp.report2.api;
 
 import org.springcamp.report2.model.User;
+import org.springcamp.report2.service.impl.UserServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -9,50 +10,22 @@ import java.util.*;
 public class UserController {
 
     private final static List<User> userList = new LinkedList<>();
+    UserServiceImpl userService = new UserServiceImpl();
 
-    // SELECT
+
     @GetMapping("/")
     public String getCurrentTime() {
 
-        return new Date().toString();
+        return userService.getCurrentTime();
     }
 
+    // SELECT
     @GetMapping("/users")
     public List<String> getUserList(
             @RequestParam(value = "name") final Optional<String> name,
             @RequestParam(value = "part") final Optional<String> part) {
 
-        List<String> users = new LinkedList<>();
-/*
-        // by name
-        if(name.isPresent()){
-            for(User u : userList){
-                if(u.getName().equals(name.get())){
-                    users.add(u.toString());
-                }
-            }
-        }
-        // by part
-        else if(part.isPresent()){
-
-            for(User u : userList){
-                if(u.getPart().equals(part.get())){
-                    users.add(u.toString());
-                }
-            }
-        }
-        // all of users
-        else {
-            for(User u : userList){
-                users.add(u.toString());
-            }
-        }
-
-        if(users.size() == 0) {
-            users.add("없습니다.");
-        }
-*/
-        return users;
+        return userService.getUserList(name, part, userList);
 
     }
 
@@ -60,20 +33,7 @@ public class UserController {
     public List<String> getUserByIdx(
             @PathVariable(value = "user_idx") final int user_idx) {
 
-        List<String> users = new LinkedList<>();
-
-        for(User u : userList) {
-            if (u.getUserIdx() == user_idx) {
-                users.add(u.toString());
-                break;
-            }
-        }
-
-        if(users.size() == 0) {
-            users.add("없습니다.");
-        }
-
-        return users;
+        return userService.getUserByIdx(user_idx, userList);
     }
 
 
