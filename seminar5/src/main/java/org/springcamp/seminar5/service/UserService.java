@@ -25,6 +25,7 @@ public class UserService {
      * @param userMapper
      */
     public UserService(final UserMapper userMapper) {
+
         this.userMapper = userMapper;
     }
 
@@ -33,8 +34,10 @@ public class UserService {
      *
      * @return DefaultRes
      */
-    public DefaultRes getAllUsers() {
-        final List<User> userList = userMapper.findAll();
+    public DefaultRes findAll() {
+
+        final List<User> userList = userMapper.selectAll();
+
         if (userList.isEmpty())
             return DefaultRes.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_USER);
         return DefaultRes.res(StatusCode.OK, ResponseMessage.READ_USER, userList);
@@ -47,7 +50,9 @@ public class UserService {
      * @return DefaultRes
      */
     public DefaultRes findByName(final String name) {
-        final User user = userMapper.findByName(name);
+
+        final User user = userMapper.selectByName(name);
+
         if (user == null)
             return DefaultRes.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_USER);
         return DefaultRes.res(StatusCode.OK, ResponseMessage.READ_USER, user);
@@ -62,10 +67,13 @@ public class UserService {
     @Transactional
     public DefaultRes save(final User user) {
         try {
-            userMapper.save(user);
+
+            userMapper.insert(user);
+
             return DefaultRes.res(StatusCode.CREATED, ResponseMessage.CREATED_USER);
         } catch (Exception e) {
-            //Rollback
+
+            // Rollback
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.error(e.getMessage());
             return DefaultRes.res(StatusCode.DB_ERROR, ResponseMessage.DB_ERROR);
@@ -82,7 +90,9 @@ public class UserService {
 
     @Transactional
     public DefaultRes update(final int userIdx, final User user) {
-        User temp = userMapper.findByUserIdx(userIdx);
+
+        User temp = userMapper.selectByUserIdx(userIdx);
+
         if (temp == null)
             return DefaultRes.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_USER);
 
@@ -90,9 +100,11 @@ public class UserService {
             if (user.getName() != null) temp.setName(user.getName());
             if (user.getPart() != null) temp.setPart(user.getPart());
             userMapper.update(userIdx, temp);
+
             return DefaultRes.res(StatusCode.NO_CONTENT, ResponseMessage.UPDATE_USER);
         } catch (Exception e) {
-            //Rollback
+
+            // Rollback
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.error(e.getMessage());
             return DefaultRes.res(StatusCode.DB_ERROR, ResponseMessage.DB_ERROR);
@@ -107,7 +119,9 @@ public class UserService {
      */
     @Transactional
     public DefaultRes deleteByUserIdx(final int userIdx) {
-        final User user = userMapper.findByUserIdx(userIdx);
+
+        final User user = userMapper.selectByUserIdx(userIdx);
+
         if (user == null)
             return DefaultRes.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_USER);
 
@@ -115,7 +129,8 @@ public class UserService {
             userMapper.deleteByUserIdx(userIdx);
             return DefaultRes.res(StatusCode.NO_CONTENT, ResponseMessage.DELETE_USER);
         } catch (Exception e) {
-            //Rollback
+
+            // Rollback
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.error(e.getMessage());
             return DefaultRes.res(StatusCode.DB_ERROR, ResponseMessage.DB_ERROR);
