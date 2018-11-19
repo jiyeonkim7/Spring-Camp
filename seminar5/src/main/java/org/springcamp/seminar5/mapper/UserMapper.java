@@ -1,8 +1,9 @@
 package org.springcamp.seminar5.mapper;
 
+import org.springcamp.seminar5.dto.User;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.*;
-import org.springcamp.seminar5.dto.User;
 
 import java.util.List;
 
@@ -52,4 +53,5 @@ public interface UserMapper {
     @Delete("DELETE FROM user " +
             "WHERE userIdx = #{userIdx}")
     void deleteByUserIdx(@Param("userIdx") final int userIdx);
+
 }

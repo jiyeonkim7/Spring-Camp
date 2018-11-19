@@ -1,8 +1,9 @@
 package org.springcamp.seminar5.model;
 
-import lombok.*;
 import org.springcamp.seminar5.utils.ResponseMessage;
 import org.springcamp.seminar5.utils.StatusCode;
+
+import lombok.*;
 
 @Data
 @Builder
@@ -33,5 +34,6 @@ public class DefaultRes<T> {
                 .build();
     }
 
-    public static final DefaultRes FAIL_DEFAULT_RES = new DefaultRes(StatusCode.INTERNAL_SERVER_ERROR, ResponseMessage.INTERNAL_SERVER_ERROR);
+    public static final DefaultRes FAIL_DEFAULT_RES =
+            new DefaultRes(StatusCode.INTERNAL_SERVER_ERROR, ResponseMessage.INTERNAL_SERVER_ERROR);
 }
