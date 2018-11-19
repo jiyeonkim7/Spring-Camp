@@ -3,11 +3,12 @@ package org.springcamp.seminar5.api;
 import lombok.extern.slf4j.Slf4j;
 import org.springcamp.seminar5.dto.User;
 import org.springcamp.seminar5.service.UserService;
+
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 import static org.springcamp.seminar5.model.DefaultRes.FAIL_DEFAULT_RES;

@@ -1,13 +1,12 @@
 package org.springcamp.seminar5.model;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 import org.springcamp.seminar5.utils.ResponseMessage;
 import org.springcamp.seminar5.utils.StatusCode;
 
 @Data
 @Builder
-// @AllArgsConstructor
+@AllArgsConstructor
 public class DefaultRes<T> {
 
     private int status;
