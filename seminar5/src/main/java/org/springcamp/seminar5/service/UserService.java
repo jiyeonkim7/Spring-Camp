@@ -40,7 +40,7 @@ public class UserService {
 
         if (userList.isEmpty())
             return DefaultRes.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_USER);
-        return DefaultRes.res(StatusCode.OK, ResponseMessage.READ_USER, userList);
+        return DefaultRes.res(StatusCode.OK, ResponseMessage.FOUND_USER, userList);
     }
 
     /**
@@ -55,7 +55,7 @@ public class UserService {
 
         if (user == null)
             return DefaultRes.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_USER);
-        return DefaultRes.res(StatusCode.OK, ResponseMessage.READ_USER, user);
+        return DefaultRes.res(StatusCode.OK, ResponseMessage.FOUND_USER, user);
     }
 
     /**
@@ -70,7 +70,7 @@ public class UserService {
 
             userMapper.insert(user);
 
-            return DefaultRes.res(StatusCode.CREATED, ResponseMessage.CREATED_USER);
+            return DefaultRes.res(StatusCode.CREATED, ResponseMessage.SAVE_USER);
         } catch (Exception e) {
 
             // Rollback
