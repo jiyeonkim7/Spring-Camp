@@ -32,6 +32,7 @@ public class UserController {
         try {
             if(name.isPresent()) return new ResponseEntity<>(userService.findByName(name.get()), HttpStatus.OK);
             return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+
         }catch (Exception e) {
             log.error(e.getMessage());
             return new ResponseEntity<>(FAIL_DEFAULT_RES, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -44,6 +45,7 @@ public class UserController {
 
         try {
             return new ResponseEntity<>(userService.save(user), HttpStatus.OK);
+
         }catch (Exception e) {
             log.error(e.getMessage());
             return new ResponseEntity<>(FAIL_DEFAULT_RES, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -57,6 +59,7 @@ public class UserController {
 
         try {
             return new ResponseEntity<>(userService.update(userIdx, user), HttpStatus.OK);
+
         }catch (Exception e) {
             log.error(e.getMessage());
             return new ResponseEntity<>(FAIL_DEFAULT_RES, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -69,6 +72,7 @@ public class UserController {
 
         try {
             return new ResponseEntity<>(userService.deleteByUserIdx(userIdx), HttpStatus.OK);
+
         }catch (Exception e) {
             log.error(e.getMessage());
             return new ResponseEntity<>(FAIL_DEFAULT_RES, HttpStatus.INTERNAL_SERVER_ERROR);
