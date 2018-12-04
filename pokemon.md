@@ -197,7 +197,7 @@
 ```json
 {
     "Content-Type": "multipart/form-data",
-	"Authorization": "token"
+    "Authorization": "token"
 }
 ```
 
@@ -291,7 +291,7 @@
 
 ```json
 {
-	"Content-Type": "application/json",
+    "Content-Type": "application/json",
     "Authorization": "token"
 }
 ```
@@ -375,7 +375,7 @@
 
 ```json
 {
-	"Content-Type": "application/json",
+    "Content-Type": "application/json",
     "Authorization": "token"
 }
 ```
@@ -463,11 +463,11 @@
 
 ```json
 {
-	"name" : "망나뇽",
-	"type" : "드래곤",
-	"photo" : "235u843u6034.jpg",
-	"weight" : "8kg",
-	"size" : "0.84m"
+    "name" : "망나뇽",
+    "type" : "드래곤",
+    "photo" : "235u843u6034.jpg",
+    "weight" : "8kg",
+    "size" : "0.84m"
 }
 ```
 
