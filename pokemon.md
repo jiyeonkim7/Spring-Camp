@@ -23,6 +23,8 @@
 
 
 
+---
+
 
 
 # API
@@ -58,9 +60,12 @@
     	"type" : "몰라",
     	"photo" : "23u6034.jpg"
     },
-			.
-			.
-			.
+    {
+    	"pokemon_id" : 3,
+    	"name" : "꼬북이",
+    	"type" : "거북이",
+    	"photo" : "23aa63v.jpg"
+    }
 	]
 }
 ```
@@ -164,7 +169,7 @@
 ```json
 {
 	"Content-Type": "multipart/form-data",
-    "Authorization": "token"
+	"Authorization": "token"
 }
 ```
 
@@ -172,7 +177,7 @@
 
 ```json
 {
-	"name" : "망나뇽",
+    "name" : "망나뇽",
     "type" : "드래곤",
     "photo" : "235u843u6034.jpg",
     "weight" : "8kg",
@@ -334,10 +339,7 @@
     	"name" : "파이리",
     	"type" : "몰라",
     	"photo" : "23u6034.jpg"
-    },
-			.
-			.
-			.
+    }
 	]
 }
 ```
@@ -381,7 +383,7 @@
 ```json
 {
 	"Content-Type": "multipart/form-data",
-    "Authorization": "token"
+	"Authorization": "token"
 }
 ```
 
@@ -390,10 +392,10 @@
 ```json
 {
 	"name" : "망나뇽",
-    "type" : "드래곤",
-    "photo" : "235u843u6034.jpg",
-    "weight" : "8kg",
-    "size" : "0.84m"
+	"type" : "드래곤",
+	"photo" : "235u843u6034.jpg",
+	"weight" : "8kg",
+	"size" : "0.84m"
 }
 ```
 
