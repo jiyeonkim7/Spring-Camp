@@ -69,12 +69,12 @@
 	]
 }
 ```
-#### 조회 실패
+#### 조회 실패 (잘못된 요청)
 
 ```json
 {
    "status" : 400,
-   "message" : "error!",
+   "message" : "Bad Request!",
    "data" : null
 }  
 ```
@@ -99,9 +99,7 @@
 }  
 ```
 
-
-
----
+<br>
 
 
 
@@ -117,7 +115,7 @@
 
 ```json
 {
-	"Content-Type": "application/json"
+    "Content-Type": "application/json"
 }
 ```
 
@@ -130,7 +128,7 @@
 ```json
 {
    "status" : 200,
-   "message" : "success",
+   "message" : "Success",
    "data" : 
     {
     	"name" : "망나뇽",
@@ -141,12 +139,22 @@
     }
 }
 ```
-#### 조회 실패
+#### 조회 실패 (잘못된 요청)
 
 ```json
 {
    "status" : 400,
-   "message" : "error!",
+   "message" : "Bad Request!",
+   "data" : null
+}  
+```
+
+#### 조회 실패 (없는 컨텐츠 조회)
+
+```json
+{
+   "status" : 404,
+   "message" : "Not Found!",
    "data" : null
 }  
 ```
@@ -170,9 +178,7 @@
    "data" : null
 }  
 ```
-
-
----
+<br>
 
 
 
@@ -188,7 +194,7 @@
 
 ```json
 {
-	"Content-Type": "multipart/form-data",
+    "Content-Type": "multipart/form-data",
 	"Authorization": "token"
 }
 ```
@@ -218,22 +224,32 @@
    "data" : null
 }
 ```
-#### 수정 실패
+#### 수정 실패 (잘못된 요청)
 
 ```json
 {
    "status" : 400,
-   "message" : "error!",
+   "message" : "Bad Request!",
    "data" : null
 }  
 ```
 
-#### 인가 실패
+#### 수정 실패 (없는 컨텐츠 수정)
+
+```json
+{
+   "status" : 404,
+   "message" : "Not Found!",
+   "data" : null
+}  
+```
+
+#### 인가 실패 (권한 없음)
 
 ```json
 {
    "status" : 403,
-   "message" : "error!",
+   "message" : "UnAuthorized!",
    "data" : null
 }  
 ```
@@ -257,9 +273,7 @@
    "data" : null
 }  
 ```
-
-
----
+<br>
 
 
 
@@ -293,22 +307,32 @@
    "data" : null
 }
 ```
-#### 삭제 실패
+#### 삭제 실패 (잘못된 요청)
 
 ```json
 {
    "status" : 400,
-   "message" : "error!",
+   "message" : "Bad Request!",
    "data" : null
 }  
 ```
 
-#### 인가 실패
+#### 삭제 실패 (없는 컨텐츠 삭제)
+
+```json
+{
+   "status" : 404,
+   "message" : "Not Found!",
+   "data" : null
+}  
+```
+
+#### 인가 실패 (권한 없음)
 
 ```json
 {
    "status" : 403,
-   "message" : "error!",
+   "message" : "UnAuthorized!",
    "data" : null
 }  
 ```
@@ -333,9 +357,7 @@
 }  
 ```
 
-
-
----
+<br>
 
 
 
@@ -384,12 +406,12 @@
 }
 ```
 
-#### 조회 실패
+#### 수정 실패 (잘못된 요청)
 
 ```json
 {
    "status" : 400,
-   "message" : "error!",
+   "message" : "Bad Request!",
    "data" : null
 }  
 ```
@@ -414,9 +436,7 @@
 }  
 ```
 
-
-
-------
+<br>
 
 
 
@@ -432,7 +452,7 @@
 
 ```json
 {
-	"Content-Type": "multipart/form-data",
+    "Content-Type": "multipart/form-data",
     "Authorization": "token"
 }
 ```
@@ -463,22 +483,22 @@
 }
 ```
 
-#### 등록 실패
+#### 등록 실패 (잘못된 요청)
 
 ```json
 {
    "status" : 400,
-   "message" : "error!",
+   "message" : "Bad Request!",
    "data" : null
 }  
 ```
 
-#### 인가 실패
+#### 인가 실패 (권한 없음)
 
 ```json
 {
    "status" : 403,
-   "message" : "error!",
+   "message" : "UnAuthorized!",
    "data" : null
 }  
 ```
@@ -507,3 +527,8 @@
 
 ------
 
+
+
+> Spring Camp _Kim Ji Yeon
+>
+> 2018.12
