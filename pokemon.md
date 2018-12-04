@@ -37,16 +37,6 @@
 
 
 
-### - 요청 헤더
-
-```json
-{
-	Content-Type: application/json
-}
-```
-
-### 
-
 ###  - 응답 바디
 
 #### 조회 성공
@@ -55,7 +45,7 @@
 {
    "status" : 200,
    "message" : "success",
-   "result" : [
+   "data" : [
     {
     	"pokemon_id" : 1,
     	"name" : "망나뇽",
@@ -68,9 +58,9 @@
     	"type" : "몰라",
     	"photo" : "23u6034.jpg"
     },
-   				 .
-   				 .
-    			 .
+			.
+			.
+			.
 	]
 }
 ```
@@ -80,7 +70,7 @@
 {
    "status" : 400,
    "message" : "error!",
-   "result" : null
+   "data" : null
 }  
 ```
 
@@ -90,7 +80,7 @@
 {
    "status" : 600,
    "message" : "DB error!",
-   "result" : null
+   "data" : null
 }  
 ```
 
@@ -112,7 +102,7 @@
 
 ```json
 {
-	Content-Type: application/json
+	"Content-Type": "application/json"
 }
 ```
 
@@ -126,7 +116,7 @@
 {
    "status" : 200,
    "message" : "success",
-   "result" : 
+   "data" : 
     {
     	"name" : "망나뇽",
     	"type" : "드래곤",
@@ -142,7 +132,7 @@
 {
    "status" : 400,
    "message" : "error!",
-   "result" : null
+   "data" : null
 }  
 ```
 
@@ -152,7 +142,7 @@
 {
    "status" : 600,
    "message" : "DB error!",
-   "result" : null
+   "data" : null
 }  
 ```
 
@@ -173,7 +163,8 @@
 
 ```json
 {
-	Content-Type: multipart/form-data
+	"Content-Type": "multipart/form-data",
+    "Authorization": "token"
 }
 ```
 
@@ -198,7 +189,8 @@
 ```json
 {
    "status" : 200,
-   "message" : "success"
+   "message" : "success",
+   "data" : null
 }
 ```
 #### 수정 실패
@@ -206,7 +198,18 @@
 ```json
 {
    "status" : 400,
-   "message" : "error!"
+   "message" : "error!",
+   "data" : null
+}  
+```
+
+#### 인가 실패
+
+```json
+{
+   "status" : 403,
+   "message" : "error!",
+   "data" : null
 }  
 ```
 
@@ -215,7 +218,8 @@
 ```json
 {
    "status" : 600,
-   "message" : "DB error!"
+   "message" : "DB error!",
+   "data" : null
 }  
 ```
 
@@ -236,7 +240,8 @@
 
 ```json
 {
-	Content-Type: multipart/form-data
+	"Content-Type": "application/json",
+    "Authorization": "token"
 }
 ```
 
@@ -249,7 +254,8 @@
 ```json
 {
    "status" : 204,
-   "message" : "success"
+   "message" : "success",
+   "data" : null
 }
 ```
 #### 삭제 실패
@@ -257,7 +263,18 @@
 ```json
 {
    "status" : 400,
-   "message" : "error!"
+   "message" : "error!",
+   "data" : null
+}  
+```
+
+#### 인가 실패
+
+```json
+{
+   "status" : 403,
+   "message" : "error!",
+   "data" : null
 }  
 ```
 
@@ -266,7 +283,8 @@
 ```json
 {
    "status" : 600,
-   "message" : "DB error!"
+   "message" : "DB error!",
+   "data" : null
 }  
 ```
 
@@ -276,7 +294,7 @@
 
 
 
-### 3. user에 등록된 포켓몬 조회
+### 5. user에 등록된 포켓몬 조회
 
 | 메소드 | 경로                      | 설명                      |
 | ------ | ------------------------- | ------------------------- |
@@ -288,7 +306,8 @@
 
 ```json
 {
-	Content-Type: application/json
+	"Content-Type": "application/json",
+    "Authorization": "token"
 }
 ```
 
@@ -302,7 +321,7 @@
 {
    "status" : 200,
    "message" : "success",
-   "result" : 
+   "data" : 
     [
     {
     	"pokemon_id" : 1,
@@ -316,9 +335,9 @@
     	"type" : "몰라",
     	"photo" : "23u6034.jpg"
     },
-   				 .
-   				 .
-    			 .
+			.
+			.
+			.
 	]
 }
 ```
@@ -329,7 +348,7 @@
 {
    "status" : 400,
    "message" : "error!",
-   "result" : null
+   "data" : null
 }  
 ```
 
@@ -339,7 +358,7 @@
 {
    "status" : 600,
    "message" : "DB error!",
-   "result" : null
+   "data" : null
 }  
 ```
 
@@ -349,7 +368,7 @@
 
 
 
-### 4. user에 포켓몬 등록
+### 6. user에 포켓몬 등록
 
 | 메소드 | 경로                      | 설명               |
 | ------ | ------------------------- | ------------------ |
@@ -361,8 +380,8 @@
 
 ```json
 {
-	Content-Type: application/json, multipart/form-data
-    Application: token,
+	"Content-Type": "multipart/form-data",
+    "Authorization": "token"
 }
 ```
 
@@ -387,7 +406,8 @@
 ```json
 {
    "status" : 201,
-   "message" : "success"
+   "message" : "success",
+   "data" : null
 }
 ```
 
@@ -396,7 +416,18 @@
 ```json
 {
    "status" : 400,
-   "message" : "error!"
+   "message" : "error!",
+   "data" : null
+}  
+```
+
+#### 인가 실패
+
+```json
+{
+   "status" : 403,
+   "message" : "error!",
+   "data" : null
 }  
 ```
 
@@ -405,7 +436,8 @@
 ```json
 {
    "status" : 600,
-   "message" : "DB error!"
+   "message" : "DB error!",
+   "data" : null
 }  
 ```
 
