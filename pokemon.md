@@ -46,7 +46,7 @@
 ```json
 {
    "status" : 200,
-   "message" : "success",
+   "message" : "Success",
    "data" : [
     {
     	"pokemon_id" : 1,
@@ -75,6 +75,16 @@
 {
    "status" : 400,
    "message" : "error!",
+   "data" : null
+}  
+```
+
+#### 서버 에러
+
+```json
+{
+   "status" : 500,
+   "message" : "Internal Server Error!",
    "data" : null
 }  
 ```
@@ -137,6 +147,16 @@
 {
    "status" : 400,
    "message" : "error!",
+   "data" : null
+}  
+```
+
+#### 서버 에러
+
+```json
+{
+   "status" : 500,
+   "message" : "Internal Server Error!",
    "data" : null
 }  
 ```
@@ -218,6 +238,16 @@
 }  
 ```
 
+#### 서버 에러
+
+```json
+{
+   "status" : 500,
+   "message" : "Internal Server Error!",
+   "data" : null
+}  
+```
+
 #### DB 에러
 
 ```json
@@ -279,6 +309,16 @@
 {
    "status" : 403,
    "message" : "error!",
+   "data" : null
+}  
+```
+
+#### 서버 에러
+
+```json
+{
+   "status" : 500,
+   "message" : "Internal Server Error!",
    "data" : null
 }  
 ```
@@ -354,6 +394,16 @@
 }  
 ```
 
+#### 서버 에러
+
+```json
+{
+   "status" : 500,
+   "message" : "Internal Server Error!",
+   "data" : null
+}  
+```
+
 #### DB 에러
 
 ```json
@@ -383,7 +433,7 @@
 ```json
 {
 	"Content-Type": "multipart/form-data",
-	"Authorization": "token"
+    "Authorization": "token"
 }
 ```
 
@@ -429,6 +479,16 @@
 {
    "status" : 403,
    "message" : "error!",
+   "data" : null
+}  
+```
+
+#### 서버 에러
+
+```json
+{
+   "status" : 500,
+   "message" : "Internal Server Error!",
    "data" : null
 }  
 ```
