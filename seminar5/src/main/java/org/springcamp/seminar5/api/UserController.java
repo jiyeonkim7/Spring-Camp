@@ -19,18 +19,19 @@ public class UserController {
 
     private final UserService userService;
 
-
     public UserController(final UserService userService) {
 
         this.userService = userService;
     }
+
 
     @GetMapping("")
     public ResponseEntity getUser(
             @RequestParam("name") final Optional<String> name) {
 
         try {
-            if(name.isPresent()) return new ResponseEntity<>(userService.findByName(name.get()), HttpStatus.OK);
+            if(name.isPresent())
+                return new ResponseEntity<>(userService.findByName(name.get()), HttpStatus.OK);
             return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
 
         }catch (Exception e) {
