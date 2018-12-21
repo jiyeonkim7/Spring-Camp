@@ -36,7 +36,7 @@ public class User {
     @Override
     public String toString() {
         return "User Index = " + user_idx +
-                ", Name = '" + name + '\'' +
-                ", Part = '" + part + '\'';
+                ", Name = '" + name + "'" +
+                ", Part = '" + part + "'";
     }
 }
